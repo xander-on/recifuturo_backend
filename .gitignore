@@ -1,0 +1,26 @@
+## .NET / Visual Studio
+bin/
+obj/
+out/
+.vscode/
+.vs/
+*.user
+*.userosscache
+*.sln.doccache
+
+## Entity Framework Core
+# Evita subir archivos de log o bases de datos locales si usas SQLite
+*.db
+*.db-journal
+
+## Configuración y Secretos
+# NUNCA subas archivos que contengan contraseñas de tu base de datos
+appsettings.Development.json
+appsettings.Local.json
+
+## Docker
+.dockerignore
+
+## Herramientas del Sistema
+.DS_Store
+Thumbs.db
