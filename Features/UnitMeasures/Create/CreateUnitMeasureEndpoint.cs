@@ -1,8 +1,6 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Routing;
 
-namespace Features.UnitMeasures.Create;
+
+namespace VerticalBackend.Features.UnitMeasures.Create;
 
 public static class CreateUnitMeasureEndpoint
 {

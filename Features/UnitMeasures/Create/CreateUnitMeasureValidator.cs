@@ -1,5 +1,7 @@
-using Features.UnitMeasures.Create;
 using FluentValidation;
+
+
+namespace VerticalBackend.Features.UnitMeasures.Create;
 
 public class CreateUnitMeasureValidator : AbstractValidator<CreateUnitMeasureRequest>
 {

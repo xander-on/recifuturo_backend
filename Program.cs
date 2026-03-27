@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Infrastructure.Persistence;
-using Features.UnitMeasures.Create;
 using FluentValidation;
+using VerticalBackend.Features.UnitMeasures.Create;
+using VerticalBackend.Features.UnitMeasures.GetAll;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,7 @@ builder.Services.AddDbContext<AppDbContext>(
 
 
 builder.Services.AddScoped<CreateUnitMeasureHandler>();
+builder.Services.AddScoped<GetAllUnitMeasuresHandler>();
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -32,4 +34,5 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.MapCreateUnitMeasure();
+app.MapGetAllUnitMeasures();
 app.Run();

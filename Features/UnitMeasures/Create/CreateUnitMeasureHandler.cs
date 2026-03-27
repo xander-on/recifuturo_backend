@@ -3,7 +3,7 @@ using Infrastructure.Persistence;
 using Domain.Entities;
 using FluentValidation;
 
-namespace Features.UnitMeasures.Create;
+namespace VerticalBackend.Features.UnitMeasures.Create;
 
 public class CreateUnitMeasureHandler
 {
