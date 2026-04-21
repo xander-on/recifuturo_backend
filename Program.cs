@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Infrastructure.Persistence;
 using FluentValidation;
-using VerticalBackend.Features.UnitMeasures.Create;
-using VerticalBackend.Features.UnitMeasures.GetAll;
+using RecifuturoBackend.Features.UnitMeasures.Create;
+using RecifuturoBackend.Features.UnitMeasures.GetAll;
 
 var builder = WebApplication.CreateBuilder(args);
 

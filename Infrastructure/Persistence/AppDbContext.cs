@@ -2,7 +2,7 @@
 
 
 using Microsoft.EntityFrameworkCore;
-using VerticalBackend.Domain.Entities;
+using RecifuturoBackend.Domain.Entities;
 
 namespace Infrastructure.Persistence;
 

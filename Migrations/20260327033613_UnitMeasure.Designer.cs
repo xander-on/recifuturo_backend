@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace VerticalBackend.Migrations
+namespace RecifuturoBackend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     [Migration("20260327033613_UnitMeasure")]

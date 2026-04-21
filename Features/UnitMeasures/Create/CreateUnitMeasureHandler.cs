@@ -1,9 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Infrastructure.Persistence;
-using Domain.Entities;
 using FluentValidation;
 
-namespace VerticalBackend.Features.UnitMeasures.Create;
+namespace RecifuturoBackend.Features.UnitMeasures.Create;
 
 public class CreateUnitMeasureHandler
 {
@@ -35,7 +34,7 @@ public class CreateUnitMeasureHandler
             return Results.Conflict($"La unidad '{cleanName}' ya existe.");
 
         // 3. Persistencia
-        var unit = new UnitMeasure(request.Name);
+        var unit = new Domain.Entities.UnitMeasure(request.Name);
         _db.UnitMeasures.Add(unit);
         await _db.SaveChangesAsync();
 

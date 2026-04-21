@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace VerticalBackend.Migrations
+namespace RecifuturoBackend.Migrations
 {
     /// <inheritdoc />
     public partial class UnitMeasure : Migration

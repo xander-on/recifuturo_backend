@@ -1,4 +1,4 @@
-namespace VerticalBackend.Domain.Enums;
+namespace RecifuturoBackend.Domain.Enums;
 
 public enum ProductStatus
 {

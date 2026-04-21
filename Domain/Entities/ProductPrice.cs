@@ -1,5 +1,5 @@
 
-namespace VerticalBackend.Domain.Entities;
+namespace RecifuturoBackend.Domain.Entities;
 
 public class ProductPrice:Base
 {

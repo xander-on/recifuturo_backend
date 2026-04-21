@@ -1,7 +1,7 @@
 
-using VerticalBackend.Domain.Enums;
+using RecifuturoBackend.Domain.Enums;
 
-namespace VerticalBackend.Domain.Entities;
+namespace RecifuturoBackend.Domain.Entities;
 
 public class Product:Base
 {

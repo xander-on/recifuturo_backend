@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Infrastructure.Persistence;
 
-namespace VerticalBackend.Features.UnitMeasures.GetAll;
+namespace RecifuturoBackend.Features.UnitMeasures.GetAll;
 
 public class GetAllUnitMeasuresHandler
 {

@@ -1,4 +1,4 @@
-namespace VerticalBackend.Features.UnitMeasures.Create;
+namespace RecifuturoBackend.Features.UnitMeasures.Create;
 
 public record CreateUnitMeasureRequest(string Name);
 

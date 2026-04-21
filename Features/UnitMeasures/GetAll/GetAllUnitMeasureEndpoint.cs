@@ -1,4 +1,4 @@
-namespace VerticalBackend.Features.UnitMeasures.GetAll;
+namespace RecifuturoBackend.Features.UnitMeasures.GetAll;
 
 public static class GetAllUnitMeasuresEndpoint
 {
