@@ -1,22 +1,29 @@
-// namespace Domain.Entities;
 
-// public class Product
-// {
-//     public Guid Id { get; private set; }
-//     public string Name { get; private set; }
-//     public List<ProductPrice> Prices { get; private set; } = [];
-//     public ProductStatus Status { get; private set; }
+using VerticalBackend.Domain.Enums;
 
-//     public Product(
-//         Guid id, 
-//         string name, 
-//         List<ProductPrice> prices, 
-//         ProductStatus status
-//     )
-//     {
-//         Id = id;
-//         Name = name;
-//         Prices = prices;
-//         Status = status;
-//     }
-// }
+namespace VerticalBackend.Domain.Entities;
+
+public class Product:Base
+{
+    public string Name { get; private set; } = null!;
+    public List<ProductPrice> Prices { get; private set; } = [];
+    public ProductStatus Status { get; private set; }
+
+    private Product() { }
+
+    private Product(Guid id, string name, ProductStatus status)
+    {
+        Id = id;
+        Name = name;
+        Status = status;
+    }
+
+    public static Product Create(string name)
+    {
+        return new Product(
+            Guid.NewGuid(),
+            name,
+            ProductStatus.Active
+        );
+    }
+}
