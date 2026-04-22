@@ -16,7 +16,7 @@ public class GetAllUnitMeasuresHandler
     {
         var units = await _db.UnitMeasures
             .AsNoTracking() // Mejora el rendimiento porque es solo lectura
-            .Select(u => new UnitMeasureResponse(u.Id, u.Name, u.IsActive))
+            .Select(u => new UnitMeasureResponse(u.Id, u.Name, u.IsActive, u.Abbreviation))
             .ToListAsync();
 
         return Results.Ok(units);

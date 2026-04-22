@@ -1,8 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Infrastructure.Persistence;
 using FluentValidation;
+using RecifuturoBackend.UnitMeasures.Domain;
 
-namespace RecifuturoBackend.Features.UnitMeasures.Create;
+namespace RecifuturoBackend.UnitMeasures.Features.Create;
 
 public class CreateUnitMeasureHandler
 {
@@ -19,12 +20,10 @@ public class CreateUnitMeasureHandler
     {
         
         var validationResult = await _validator.ValidateAsync(request);
+        
         if (!validationResult.IsValid)
             return Results.ValidationProblem(validationResult.ToDictionary());
             
-        // 1. Validaciones de entrada
-        if (string.IsNullOrWhiteSpace(request.Name))
-            return Results.BadRequest("El nombre no puede estar vacío.");
 
         // 2. Lógica de negocio (Evitar duplicados)
         var cleanName = request.Name.Trim().ToUpper();
@@ -34,11 +33,11 @@ public class CreateUnitMeasureHandler
             return Results.Conflict($"La unidad '{cleanName}' ya existe.");
 
         // 3. Persistencia
-        var unit = new Domain.Entities.UnitMeasure(request.Name);
+        var unit = new UnitMeasure(request.Name, request.Abbreviation);
         _db.UnitMeasures.Add(unit);
         await _db.SaveChangesAsync();
 
-        var response = new CreateUnitMeasureResponse(unit.Id, unit.Name);
+        var response = new CreateUnitMeasureResponse(unit.Id, unit.Name, unit.Abbreviation);
         return Results.Created($"/api/unit-measures/{unit.Id}", response);
     }
 }

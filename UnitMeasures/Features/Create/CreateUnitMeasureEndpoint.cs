@@ -1,6 +1,6 @@
 
 
-namespace RecifuturoBackend.Features.UnitMeasures.Create;
+namespace RecifuturoBackend.UnitMeasures.Features.Create;
 
 public static class CreateUnitMeasureEndpoint
 {
