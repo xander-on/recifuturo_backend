@@ -1,8 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Infrastructure.Persistence;
 using FluentValidation;
-using RecifuturoBackend.Features.UnitMeasures.GetAll;
-using RecifuturoBackend.UnitMeasures.Features.Create;
+using RecifuturoBackend.UnitMeasures;
+using RecifuturoBackend.Products;
+using RecifuturoBackend.Products.Features.Create;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,16 +12,14 @@ builder.Services.AddDbContext<AppDbContext>(
     options => options.UseSqlServer(connectionString)
 );
 
-
-builder.Services.AddScoped<CreateUnitMeasureHandler>();
-builder.Services.AddScoped<GetAllUnitMeasuresHandler>();
-
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+// modulos
+builder.Services.AddUnitMeasures();
+builder.Services.AddProducts();
 
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -33,6 +32,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapCreateUnitMeasure();
-app.MapGetAllUnitMeasures();
+app.MapUnitMeasures();
+app.MapProducts();
+// app.MapGetAllProducts();
+
+
 app.Run();
