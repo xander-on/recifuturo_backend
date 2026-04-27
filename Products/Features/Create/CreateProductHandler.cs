@@ -26,12 +26,27 @@ public class CreateProductHandler
         
         //aqui validar si el nombre es repetido
         var cleanName = request.Name.Trim().ToUpper();
-        var exists = await _db.Products.AnyAsync(x => x.Name == cleanName);
+        var exists = await _db.Products.AnyAsync(x => x.Name.ToUpper() == cleanName);
         
         if (exists)
             throw new ConflictException($"El producto '{cleanName}' ya existe.");
 
         var product = Product.Create(request.Name);
+
+        foreach (var price in request.Prices)
+        {
+            var productPrice = ProductPrice.Create(
+                product.Id,
+                price.UnitMeasureId,
+                price.ValueA,
+                price.ValueB,
+                price.ValueC,
+                price.ValueD
+            );
+
+            product.AddPrice(productPrice);
+        }
+
         await _db.Products.AddAsync(product);
         await _db.SaveChangesAsync();
 

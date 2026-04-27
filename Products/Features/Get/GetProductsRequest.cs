@@ -25,9 +25,9 @@ public record ProductDto(
 );
 
 public record ProductPriceDto(
-    decimal ValueA,
-    decimal ValueB,
-    decimal ValueC,
-    decimal ValueD,
+    decimal? ValueA,
+    decimal? ValueB,
+    decimal? ValueC,
+    decimal? ValueD,
     Guid UnitMeasureId
 );

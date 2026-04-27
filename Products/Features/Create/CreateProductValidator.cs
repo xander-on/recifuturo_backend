@@ -13,5 +13,14 @@ public class CreateProductValidator:AbstractValidator<CreateProductRequest>
         
         RuleFor(x => x.Prices)
         .NotEmpty().WithMessage("Debe tener al menos un precio");
+
+        RuleFor(x => x.Prices)
+        .Must(prices => prices.Any(p =>
+            p.ValueA.HasValue ||
+            p.ValueB.HasValue ||
+            p.ValueC.HasValue ||
+            p.ValueD.HasValue
+        ))
+        .WithMessage("Debe enviar al menos un valor");
     }
 }

@@ -25,4 +25,10 @@ public class Product:Base
             ProductStatus.Active
         );
     }
+
+
+    public void AddPrice(ProductPrice price)
+    {
+        Prices.Add(price);
+    }
 }

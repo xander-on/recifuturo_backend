@@ -7,12 +7,18 @@ public record CreateProductRequest(
     List<CreateProductPriceRequest> Prices
 );
 
+public record CreateProductPriceRequest(
+    decimal? ValueA,
+    decimal? ValueB,
+    decimal? ValueC,
+    decimal? ValueD,
+    Guid UnitMeasureId
+);
 
+
+
+// RESPONSE
 public record CreateProductResponse(Guid Id);
 
 
 
-public record CreateProductPriceRequest(
-    decimal Amount,
-    Guid UnitMeasureId
-);
