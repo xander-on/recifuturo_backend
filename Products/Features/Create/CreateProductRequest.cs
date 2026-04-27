@@ -9,6 +9,7 @@ public record CreateProductRequest(
     List<CreateProductPriceRequest> Prices
 );
 
+
 public record CreateProductResponse(Guid Id);
 
 

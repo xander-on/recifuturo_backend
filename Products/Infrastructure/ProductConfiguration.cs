@@ -16,6 +16,9 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
             .IsRequired()
             .HasMaxLength(150);
 
+        entity.HasIndex(p => p.Name)
+            .IsUnique();
+
         entity.HasMany(p => p.Prices)
             .WithOne()
             .HasForeignKey(pp => pp.ProductId)

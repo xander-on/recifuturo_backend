@@ -4,6 +4,7 @@ using FluentValidation;
 using RecifuturoBackend.UnitMeasures;
 using RecifuturoBackend.Products;
 using RecifuturoBackend.Products.Features.Create;
+using RecifuturoBackend.Shared.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +31,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<ExceptionMiddleware>();
 app.UseHttpsRedirection();
 
 app.MapUnitMeasures();

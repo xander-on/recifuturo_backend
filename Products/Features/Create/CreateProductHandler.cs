@@ -1,5 +1,7 @@
 using FluentValidation;
 using Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
+using RecifuturoBackend.Products.Domain;
 
 namespace RecifuturoBackend.Products.Features.Create;
 
@@ -15,18 +17,24 @@ public class CreateProductHandler
         _validator = validator;
     }  
 
-    public async Task<IResult> HandleAsync(CreateProductRequest request)
+    public async Task<CreateProductResponse> HandleAsync(CreateProductRequest request)
     {
         var validationResult = await _validator.ValidateAsync(request);
         
         if (!validationResult.IsValid)
-            return Results.ValidationProblem(validationResult.ToDictionary());
-
-        Console.WriteLine($"Nombre: {request.Name}");
+             throw new ValidationException(validationResult.Errors);
         
-        foreach (var price in request.Prices)
-            Console.WriteLine($"Precio: {price.Amount}, Unidad: {price.UnitMeasureId}");
+        //aqui validar si el nombre es repetido
+        var cleanName = request.Name.Trim().ToUpper();
+        var exists = await _db.Products.AnyAsync(x => x.Name == cleanName);
+        
+        if (exists)
+            throw new ConflictException($"El producto '{cleanName}' ya existe.");
 
-        return Results.Ok("Producto creado exitosamente");
+        var product = Product.Create(request.Name);
+        await _db.Products.AddAsync(product);
+        await _db.SaveChangesAsync();
+
+        return new CreateProductResponse(product.Id);
     } 
 }
