@@ -1,6 +1,4 @@
 
-using RecifuturoBackend.Products.Domain;
-
 namespace RecifuturoBackend.Products.Features.Create;
 
 
