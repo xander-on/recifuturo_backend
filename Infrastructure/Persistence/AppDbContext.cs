@@ -14,6 +14,8 @@ public class AppDbContext : DbContext
     public DbSet<ProductPrice> ProductPrices => Set<ProductPrice>();
     public DbSet<UnitMeasure> UnitMeasures => Set<UnitMeasure>();
 
+    public DbSet<Recycler> Recyclers => Set<Recycler>();
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

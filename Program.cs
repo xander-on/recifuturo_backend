@@ -16,6 +16,7 @@ builder.Services.AddDbContext<AppDbContext>(
 // modulos
 builder.Services.AddUnitMeasures();
 builder.Services.AddProducts();
+builder.Services.AddRecyclers();
 
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
@@ -36,6 +37,7 @@ app.UseHttpsRedirection();
 
 app.MapUnitMeasures();
 app.MapProducts();
+app.MapRecyclers();
 // app.MapGetAllProducts();
 
 
