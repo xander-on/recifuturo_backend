@@ -18,7 +18,7 @@ public class GetAllRecyclersHandler
     {
         var recyclers = await _db.Recyclers
             .AsNoTracking()
-            .Select(r => new RecyclerResponse(r.Id, r.ci, r.Name, r.Gender))
+            .Select(r => new RecyclerResponse(r.Id, r.Ci, r.Name, r.Gender))
             .ToListAsync();
 
         return Results.Ok(recyclers);

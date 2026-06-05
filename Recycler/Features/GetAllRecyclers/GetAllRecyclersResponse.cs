@@ -2,7 +2,7 @@
 
 public record RecyclerResponse(
     Guid Id, 
-    string? ci,
+    string? Ci,
     string Name, 
     Gender Gender
 );
