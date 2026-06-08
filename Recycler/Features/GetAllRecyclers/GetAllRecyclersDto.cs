@@ -1,9 +1,8 @@
 
-public record GetAllRecyclerResponse();
 
 
 
-public record RecyclerResponse(
+public record GetAllRecyclersResponse(
     Guid Id, 
     string? Ci,
     string Name, 

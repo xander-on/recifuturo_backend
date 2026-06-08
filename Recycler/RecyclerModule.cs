@@ -11,6 +11,7 @@ public static class RecyclerModule
         services.AddScoped<GetAllRecyclersHandler>();
         services.AddScoped<CreateRecyclerHandler>();
         services.AddScoped<UpdateRecyclerHandler>();
+        services.AddScoped<DeleteRecyclerHandler>();
         return services;
     }
 
@@ -19,6 +20,7 @@ public static class RecyclerModule
         app.MapGetAllRecyclers();
         app.MapCreateRecycler();
         app.MapUpdateRecycler();
+        app.MapDeleteRecycler();
         return app;
     }
 }
