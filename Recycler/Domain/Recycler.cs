@@ -1,6 +1,8 @@
 
 
 
+using System.Globalization;
+
 public class Recycler : Base
 {
     public string? Ci { get; private set; }
@@ -27,5 +29,18 @@ public class Recycler : Base
             name,
             gender
         );
+    }
+
+
+    public void Update(string? ci, string? name, Gender? gender)
+    {   
+        if(ci is not null)
+            Ci = ci;
+
+        if(name is not null)
+            Name = CultureInfo.CurrentCulture.TextInfo.ToUpper(name);
+
+        if(gender is not null)
+            Gender = gender.Value;
     }
 }

@@ -1,4 +1,7 @@
 
+public record GetAllRecyclerResponse();
+
+
 
 public record RecyclerResponse(
     Guid Id, 

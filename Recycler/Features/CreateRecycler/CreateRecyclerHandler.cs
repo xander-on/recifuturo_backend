@@ -9,10 +9,13 @@ using Microsoft.EntityFrameworkCore;
 public class CreateRecyclerHandler
 {
     private readonly AppDbContext _db;
+    private readonly RecyclerRepository _repository;
     private readonly IValidator<CreateRecyclerRequest> _validator;
-    public CreateRecyclerHandler(AppDbContext db, IValidator<CreateRecyclerRequest> validator)
+
+    public CreateRecyclerHandler(AppDbContext db, RecyclerRepository repository, IValidator<CreateRecyclerRequest> validator)
     {
         _db = db;
+        _repository = repository;
         _validator = validator;
     }
 
@@ -26,8 +29,10 @@ public class CreateRecyclerHandler
         var cleanName = request.Name.Trim().ToUpper();
         var exists = await _db.Recyclers.AnyAsync(x => x.Name.ToUpper() == cleanName);
 
-        if (exists)
+        if (await _repository.NameExistsAsync(request.Name))
+                // return Results.Conflict(new { error = $"El nombre '{request.Name}' ya está en uso." });
             throw new ConflictException($"El reciclador '{cleanName}' ya existe.");
+
 
         var recycler = Recycler.Create(request.Ci, request.Name, request.Gender);
 
